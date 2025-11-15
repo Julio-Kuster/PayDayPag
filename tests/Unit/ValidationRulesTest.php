@@ -3,7 +3,7 @@
 namespace Tests\Unit;
 
 use Illuminate\Support\Facades\Validator;
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 
 class ValidationRulesTest extends TestCase
 {

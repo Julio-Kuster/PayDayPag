@@ -22,3 +22,6 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Pasta de documentos duplicados (não deve estar no projeto)
+/Documents

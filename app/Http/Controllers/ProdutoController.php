@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Produto;
 use Illuminate\Http\Request;
+use App\Patterns\Factory\SimpleProductCreator;
+use App\Patterns\Factory\DigitalProductCreator;
 
 class ProdutoController extends Controller
 {
@@ -25,10 +27,16 @@ class ProdutoController extends Controller
             'descricao' => 'nullable|string',
             'preco' => 'required|numeric|min:0',
             'categoria_id' => 'required|exists:categorias,id',
-            'user_id' => 'required|exists:usuarios,id',
+            'user_id' => 'required|exists:users,id',
+			'tipo' => 'nullable|string|in:simple,digital',
         ]);
 
-        $produto = Produto::create($request->all());
+		// Factory Method: choose creator by 'tipo'
+		$creatorClass = $request->input('tipo') === 'digital'
+			? DigitalProductCreator::class
+			: SimpleProductCreator::class;
+		$creator = app($creatorClass);
+		$produto = $creator->create($request->all());
         return response()->json($produto, 201);
     }
 

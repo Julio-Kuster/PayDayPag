@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('comercios', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('usuario_id')->constrained('usuarios', 'id')->onDelete('cascade'); // ID DO USUÁRIO
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // ID DO USUÁRIO
             $table->string('nome_empresa', 100); // NOME DA EMPRESA QUE USA O SERVIÇO DE PAGAMENTOS
             $table->string('cnpj', 14)->unique();
             $table->timestamps();

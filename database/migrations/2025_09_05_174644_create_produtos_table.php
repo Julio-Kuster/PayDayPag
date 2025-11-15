@@ -17,7 +17,7 @@ return new class extends Migration
         $table->text('descricao')->nullable();
         $table->decimal('preco', 10, 2);
         $table->foreignId('categoria_id')->constrained('categorias')->onDelete('cascade');
-        $table->foreignId('user_id')->constrained('usuarios')->onDelete('cascade');
+        $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
         $table->timestamps();
     });
 }

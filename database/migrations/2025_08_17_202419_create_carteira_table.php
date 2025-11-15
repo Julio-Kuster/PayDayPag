@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transacoes', function (Blueprint $table) {
+        Schema::create('carteiras', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pagador_id')->constrained('usuarios')->onDelete('cascade'); // quem paga
-            $table->foreignId('beneficiario_id')->constrained('usuarios')->onDelete('cascade'); // quem recebe
-            $table->foreignId('metodo_pagamento_id')->constrained('metodos_pagamento')->onDelete('restrict'); // método de pagamento
-            $table->decimal('valor', 10, 2); // valor da transação
-            $table->string('status')->default('pendente'); // pendente, concluido, falhou
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Referência ao usuário
+            $table->decimal('saldo', 10, 2)->default(0); // Saldo da carteira
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transacoes');
+        Schema::dropIfExists('carteiras');
     }
 };

@@ -11,15 +11,15 @@ class ComerciosSeeder extends Seeder
     {
         DB::table('comercios')->insert([
             [
-                'usuario_id' => 1,
-                'nome_empresa' => 'OcultDay Comércio',
+                'user_id' => 1,
+                'nome_empresa' => 'TechStore Comércio',
                 'cnpj' => '12345678000199',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'usuario_id' => 2,
-                'nome_empresa' => 'Petshop Equipe Cão',
+                'user_id' => 2,
+                'nome_empresa' => 'Petshop Amigo Fiel',
                 'cnpj' => '98765432000188',
                 'created_at' => now(),
                 'updated_at' => now()
